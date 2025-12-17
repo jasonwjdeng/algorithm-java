@@ -18,7 +18,8 @@ public class SortTest {
           new ShellSort<>(),
           new MergeSort<>(),
           new QuickSort<>(),
-          new HeapSort<>());
+          new HeapSort<>(),
+          new CountingSort<>());
 
   @Test
   void sort10() {
