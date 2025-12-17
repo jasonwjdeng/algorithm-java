@@ -50,10 +50,4 @@ public class BucketSort<T extends Comparable<T>> extends Sort<T> {
       }
     }
   }
-
-  private Integer[] arrayAppend(Integer[] arr, int val) {
-    Integer[] newArr = Arrays.copyOf(arr, arr.length + 1);
-    newArr[newArr.length - 1] = val;
-    return newArr;
-  }
 }

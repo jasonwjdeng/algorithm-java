@@ -25,4 +25,10 @@ public abstract class Sort<T extends Comparable<T>> {
   protected void printArray(T[] a) {
     System.out.println(Arrays.stream(a).map(Objects::toString).collect(Collectors.joining(" ")));
   }
+
+  static Integer[] arrayAppend(Integer[] arr, int val) {
+    Integer[] newArr = Arrays.copyOf(arr, arr.length + 1);
+    newArr[newArr.length - 1] = val;
+    return newArr;
+  }
 }

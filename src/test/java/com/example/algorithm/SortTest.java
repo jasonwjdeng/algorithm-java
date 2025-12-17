@@ -20,7 +20,8 @@ public class SortTest {
           new QuickSort<>(),
           new HeapSort<>(),
           new CountingSort<>(),
-          new BucketSort<>());
+          new BucketSort<>(),
+          new RadixSort<>());
 
   @Test
   void sort10() {
