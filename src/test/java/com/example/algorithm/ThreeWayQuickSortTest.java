@@ -5,9 +5,9 @@ import static com.example.algorithm.TestUtils.sort;
 
 import org.junit.jupiter.api.Test;
 
-class QuickSortTest {
+class ThreeWayQuickSortTest {
 
-  QuickSort<Integer> quickSort = new QuickSort<>();
+  ThreeWayQuickSort<Integer> quickSort = new ThreeWayQuickSort<>();
 
   @Test
   void sort10() {
@@ -33,7 +33,7 @@ class QuickSortTest {
   }
 
   @Test
-  void sort10kWithDuplicatedValue() {
-    sort(quickSort, generateArray(10000, 2), false);
+  void sort1000kWithDuplicatedValue() {
+    sort(quickSort, generateArray(1000000, 2), false);
   }
 }

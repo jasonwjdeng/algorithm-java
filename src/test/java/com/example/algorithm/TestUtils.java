@@ -16,6 +16,11 @@ public class TestUtils {
     }
     return nums;
   }
+  static Integer[] generateArray(int size, int val) {
+    Integer[] nums = new Integer[size];
+    Arrays.fill(nums, val);
+    return nums;
+  }
 
   static void sort(Sort<Integer> sort, int size, boolean logInfo) {
     sort(sort, generateRandomArray(size), logInfo);
