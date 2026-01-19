@@ -6,14 +6,14 @@ import java.util.Arrays;
 // https://leetcode.cn/problems/longest-continuous-increasing-subsequence/
 public class Solution674 {
   public int findLengthOfLCIS(int[] nums) {
-    int[] dp = new int[nums.length];
-    dp[0] = 1;
     int result = 1;
+    int pre = 1, cur = 1;
     for (int i = 1; i < nums.length; i++) {
       if (nums[i] > nums[i - 1]) {
-        dp[i] = dp[i - 1] + 1;
-        result = Math.max(result, dp[i]);
-      } else dp[i] = 1;
+        cur = pre + 1;
+        result = Math.max(result, cur);
+      } else cur = 1;
+      pre = cur;
     }
     return result;
   }
