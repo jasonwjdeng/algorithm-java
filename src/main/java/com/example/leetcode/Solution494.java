@@ -11,13 +11,15 @@ public class Solution494 {
     if ((target + sum) % 2 > 0) return 0;
     if (Math.abs(target) > sum) return 0;
     int n = (target + sum) / 2;
-    //填满j（包括j）这么大容积的包，有dp[j]种方法
+    // 填满j（包括j）这么大容积的包，有dp[j]种方法
     int[] dp = new int[n + 1];
-    //装满背包为0的方法有一种，放0件物品
+    // 装满背包为0的方法有一种，放0件物品
     dp[0] = 1;
+    // 正序遍历物品
     for (int num : nums) {
+      // 再倒序遍历背包
       for (int i = n; i >= num; i--) {
-        dp[i] = dp[i] + dp[i - num];
+        dp[i] += dp[i - num];
       }
     }
     return dp[n];

@@ -4,7 +4,10 @@ package com.example.leetcode;
 // https://leetcode.cn/problems/ones-and-zeroes/
 public class Solution474 {
   public int findMaxForm(String[] strs, int m, int n) {
+    // 这是一个涉及两个背包的0/1背包问题
+    // dp[i][j]表示有最多i个0和j个1的strs的最大子集的大小
     int[][] dp = new int[m + 1][n + 1];
+    // 先正序遍历物品
     for (String str : strs) {
       int zero = 0;
       int one = 0;
@@ -12,6 +15,7 @@ public class Solution474 {
         if (c == '0') zero++;
         else one++;
       }
+      // 再倒序遍历背包，这里是两个背包
       for (int j = m; j >= zero; j--) {
         for (int k = n; k >= one; k--) {
           dp[j][k] = Math.max(dp[j][k], dp[j - zero][k - one] + 1);

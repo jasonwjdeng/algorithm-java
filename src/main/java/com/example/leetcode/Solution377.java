@@ -6,14 +6,18 @@ import java.util.Arrays;
 // https://leetcode.cn/problems/combination-sum-iv/
 public class Solution377 {
   public int combinationSum4(int[] nums, int target) {
+    // dp[j]表示和为j的组合个数
     int[] dp = new int[target + 1];
+    // 和为0的组合只有1种，就是什么都不选
     dp[0] = 1;
+    // 先遍历背包
     for (int j = 0; j <= target; j++) {
+      // 再遍历物品
       for (int i = 0; i < nums.length; i++) {
         if (j >= nums[i]) dp[j] += dp[j - nums[i]];
       }
     }
-//    System.out.println(Arrays.toString(dp));
+    //    System.out.println(Arrays.toString(dp));
     return dp[target];
   }
 
