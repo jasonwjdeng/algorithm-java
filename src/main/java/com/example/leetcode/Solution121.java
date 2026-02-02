@@ -1,15 +1,20 @@
 package com.example.leetcode;
 
-// 122.买卖股票的最佳时机 II
-// https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii
-public class Solution122 {
+// 121. 买卖股票的最佳时机
+// https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
+public class Solution121 {
   // 贪心算法
   public int maxProfit(int[] prices) {
-    int result = 0;
-    for (int i = 1; i < prices.length; i++) {
-      if (prices[i] > prices[i - 1]) result += prices[i] - prices[i - 1];
+    int profit = 0;
+    //    int cost = Integer.MAX_VALUE;
+    int cost = 10001;
+    for (int price : prices) {
+      // 找出最低成本
+      cost = Math.min(cost, price);
+      // 找出最大利润
+      profit = Math.max(profit, price - cost);
     }
-    return result;
+    return profit;
   }
 
   public int maxProfit1D(int[] prices) {
@@ -20,7 +25,7 @@ public class Solution122 {
     dp[0] = -prices[0];
     for (int i = 1; i < prices.length; i++) {
       // 买入股票后持有的现金，要么之前就买入，要么现在买入
-      dp[0] = Math.max(dp[0], dp[1] - prices[i]);
+      dp[0] = Math.max(dp[0], -prices[i]);
       // 卖出股票后持有的现金，要么之前就卖出，要么现在卖出
       dp[1] = Math.max(dp[1], dp[0] + prices[i]);
     }
@@ -37,7 +42,7 @@ public class Solution122 {
     dp[0][1] = 0;
     for (int i = 1; i < prices.length; i++) {
       // 买入股票后持有的现金，要么之前就买入，要么现在买入
-      dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] - prices[i]);
+      dp[i][0] = Math.max(dp[i - 1][0], -prices[i]);
       // 卖出股票后持有的现金，要么之前就卖出，要么现在卖出
       dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] + prices[i]);
     }
